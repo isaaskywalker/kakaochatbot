@@ -1,17 +1,43 @@
 {
   "version": 2,
-  "name": "kakao-chatbot-api",
+  "name": "kakao-chatbot-reservation",
+  "description": "카카오톡 챗봇 단체관람 예약 시스템",
   "functions": {
     "api/reservation.js": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs18.x",
+      "maxDuration": 30
     }
   },
   "routes": [
     {
       "src": "/api/reservation",
-      "dest": "/api/reservation.js"
+      "dest": "/api/reservation.js",
+      "methods": ["POST", "OPTIONS"]
     }
   ],
-  { 
-     "env": 
-  }
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ]
+}
