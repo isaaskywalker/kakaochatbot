@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "kakao-chatbot-api",
+  "functions": {
+    "api/reservation.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/reservation",
+      "dest": "/api/reservation.js"
+    }
+  ],
+  "env": {
+    "GOOGLE_SHEET_ID": "@google-sheet-id",
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "@google-service-account-email", 
+    "GOOGLE_PRIVATE_KEY": "@google-private-key"
+  }
+}
