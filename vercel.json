@@ -12,5 +12,6 @@
       "dest": "/api/reservation.js"
     }
   ],
-  "env": {
-}
+  { 
+     "env": 
+  }
